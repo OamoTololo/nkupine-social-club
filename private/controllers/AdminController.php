@@ -2,8 +2,8 @@
 
 class AdminController extends Controller
 {
-    public function __construct()
+    public function index($id = null)
     {
-        echo "This is the admin controller class.";
+        echo "This is the amin controller class." . $id;
     }
 }

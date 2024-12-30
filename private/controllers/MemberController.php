@@ -2,8 +2,8 @@
 
 class MemberController extends Controller
 {
-    public function __construct()
+    public function index($id = null)
     {
-        echo "This is the member controller class.";
+        echo "This is the member controller class." . $id;
     }
 }

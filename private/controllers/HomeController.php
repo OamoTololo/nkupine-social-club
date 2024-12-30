@@ -8,8 +8,8 @@
 
 class HomeController extends Controller
 {
-    public function __construct()
+    public function index($id = null)
     {
-        echo "HomeController";
+        echo "This is the home controller class." . $id;
     }
 }
