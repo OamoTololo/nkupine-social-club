@@ -1,21 +1,59 @@
 <?php
-/**
- * Author: Oamogetswe Mgidi
+/*
+ * This file is part of the Nkupine Social Club Application.
  *
- * Main app file
+ * @author      Oamogetswe Mgidi
+ * @copyright   Copyright (c) Ntwana Sosha LTD
  */
 class App
 {
     protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
+
     public function __construct()
     {
-        print_r($this->getURL());
+        $URL = $this->getURL();
+
+        // Check if the controller file exists
+        if (isset($URL[0]) && file_exists('./private/controllers/' . ucfirst($URL[0]) . '.php')) {
+            $this->controller = ucfirst($URL[0]); // Capitalize the first letter
+            unset($URL[0]);
+        } else {
+            die("Controller {$URL[0]} does not exist.");
+        }
+
+        // Require the controller file
+        $controllerFile = "./private/controllers/{$this->controller}.php";
+        if (file_exists($controllerFile)) {
+            require $controllerFile;
+        } else {
+            die("Controller file {$controllerFile} not found.");
+        }
+
+        // Instantiate the controller class
+        if (class_exists($this->controller)) {
+            $this->controller = new $this->controller();
+        } else {
+            die("Controller class {$this->controller} not found.");
+        }
+//
+//        // Check for the method
+//        if (isset($URL[1]) && method_exists($this->controller, $URL[1])) {
+//            $this->method = $URL[1];
+//            unset($URL[1]);
+//        }
+//
+//        // Get the parameters
+//        $this->params = $URL ? array_values($URL) : [];
+//
+//        // Call the controller method with parameters
+//        call_user_func_array([$this->controller, $this->method], $this->params);
     }
+
     private function getURL()
     {
-        echo '<pre>';
-        return explode('/', filter_var(trim($_GET['url'], '/')), FILTER_SANITIZE_URL);
+        $url = $_GET['url'] ?? 'HomeController';
+        return explode('/', filter_var(trim($url, '/'), FILTER_SANITIZE_URL));
     }
 }
