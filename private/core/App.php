@@ -37,18 +37,19 @@ class App
         } else {
             die("Controller class {$this->controller} not found.");
         }
-//
-//        // Check for the method
-//        if (isset($URL[1]) && method_exists($this->controller, $URL[1])) {
-//            $this->method = $URL[1];
-//            unset($URL[1]);
-//        }
-//
-//        // Get the parameters
-//        $this->params = $URL ? array_values($URL) : [];
-//
-//        // Call the controller method with parameters
-//        call_user_func_array([$this->controller, $this->method], $this->params);
+
+        // Check for the method
+        if (isset($URL[1]) && method_exists($this->controller, $URL[1])) {
+            $this->method = $URL[1];
+            unset($URL[1]);
+        }
+
+        $URL = array_values($URL);
+
+        $this->params = $URL;
+
+        // Call the controller method with parameters
+        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
     private function getURL()
