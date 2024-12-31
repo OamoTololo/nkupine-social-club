@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="<?=ROOT?>/assets/images/Nkupine-logo.jpeg" class="border border-dark rounded" alt="Nkupine Logo" style="width: 50px;">Nkupine Social Club
+            <img src="<?=ROOT?>/assets/images/Nkupine-logo.png" class="border border-dark rounded" alt="Nkupine Logo"
+                 style="width: 55px;">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
