@@ -11,4 +11,4 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/nkupine-social-club.css">
 </head>
 <body>
-    <div style="min-width: 350px;">
+    <div style="min-width: 350px; ">
