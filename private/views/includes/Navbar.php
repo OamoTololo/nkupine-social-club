@@ -19,16 +19,19 @@ $this->view('includes/Header');
                 <!-- Centered Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?=ROOT?>/HomeController">Dashboard</a>
+                        <a class="nav-link active" aria-current="page" href="HomeController">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=ROOT?>/AdminController">Profile</a>
+                        <a class="nav-link" href="AboutController">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=ROOT?>/MemberController">Contribution</a>
+                        <a class="nav-link" href="ProfileController">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=ROOT?>/StuffController">Loans</a>
+                        <a class="nav-link" href="MemberController">Contribution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="StuffController">Loans</a>
                     </li
                 </ul>
             </div>
