@@ -21,7 +21,7 @@ class NkupineSocialClubDB
                 $this->pdo = new PDO("mysql:host=$dbHost;dbname=$databaseName;charset=utf8mb4", $username, $password);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
-                error_log("Connection error: " . $e->getMessage());
+                error_log("Database connection error: " . $e->getMessage());
                 throw new Exception("Unable to connect to the database. Please try again later.");
             }
         }
@@ -34,11 +34,12 @@ class NkupineSocialClubDB
             $stmt = $this->connection()->prepare($query);
             $stmt->execute($data);
 
-            return $stmt->fetchAll(PDO::FETCH_OBJ); // Returns results as objects
+            return $stmt->fetchAll(PDO::FETCH_OBJ) ?: []; // Return empty array if no results
         } catch (PDOException $e) {
             error_log("Query failed: $query");
             error_log("Error: " . $e->getMessage());
-            return false;
+            return [];
         }
     }
 }
+
