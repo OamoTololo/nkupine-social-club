@@ -8,17 +8,15 @@
 
 class Modal extends NkupineSocialClubDB
 {
-    protected $table = "MEMBERS"; // Fixed typo
+    protected $table = "Members";
 
     public function where($column, $value)
     {
-        $query = "SELECT * FROM {$this->table} WHERE {$column} = :value";
+        $query = "SELECT * FROM {$this->table} WHERE $column = :value";
+        echo $query;
 
         try {
-            $stmt = $this->connection()->prepare($query);
-            $stmt->execute(['value' => $value]);
-
-            return $stmt->fetchAll(PDO::FETCH_OBJ); // Return all matching records
+            return $this->query($query, ['value' => $value]);
         } catch (PDOException $e) {
             error_log("Query failed: $query");
             error_log("Error: " . $e->getMessage());
