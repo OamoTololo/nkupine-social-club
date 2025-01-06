@@ -28,10 +28,10 @@ $this->view('includes/Header');
                         <a class="nav-link" href="ProfileController">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="MemberController">Contribution</a>
+                        <a class="nav-link" href="ContributionsController">Contribution</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="StuffController">Loans</a>
+                        <a class="nav-link" href="LoansController">Loans</a>
                     </li
                 </ul>
             </div>

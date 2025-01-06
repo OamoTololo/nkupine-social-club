@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     public function index($id = null)
     {
-        $this->view('HomeView');
+        echo $this->view('HomeView');
     }
 }
