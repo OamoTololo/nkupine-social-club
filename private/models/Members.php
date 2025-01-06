@@ -5,11 +5,11 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) Ntwana Sosha LTD
  */
-namespace modals;
+namespace models;
 
-use Modal;
+use Model;
 
-class Members extends Modal
+class Members extends Model
 {
 
 }
