@@ -12,10 +12,22 @@ class Controller
     {
         extract($data);
 
-        if (file_exists("./private/views/" .$view . ".php")) {
-            require "./private/views/" .$view . ".php";
+        if (file_exists("./private/views/{$view}.php")) {
+            require "./private/views/{$view}.php";
         } else {
             require "./private/views/404.php";
         }
+    }
+
+    public function loadModel($model): Model
+    {
+        $model = ucfirst($model);
+
+        if (file_exists("./private/models/{$model}.php")) {
+            require "./private/models/{$model}.php";
+            return $model = new Model();
+        }
+
+        return false;
     }
 }
