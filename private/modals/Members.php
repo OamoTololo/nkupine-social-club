@@ -5,10 +5,11 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) Ntwana Sosha LTD
  */
-class LoansController extends Controller
+namespace modals;
+
+use Modal;
+
+class Members extends Modal
 {
-    public function index($id = null)
-    {
-        echo $this->view('LoansView');
-    }
+
 }

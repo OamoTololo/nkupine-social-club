@@ -1,10 +1,15 @@
 <?php
-
+/*
+ * This file is part of the Nkupine Social Club Application.
+ *
+ * @author      Oamogetswe Mgidi
+ * @copyright   Copyright (c) Ntwana Sosha LTD
+ */
 class NkupineSocialClubDB
 {
     protected ?PDO $pdo = null;
 
-    private function connection()
+    protected function connection()
     {
         if ($this->pdo === null) {
             try {
@@ -13,10 +18,10 @@ class NkupineSocialClubDB
                 $password = getenv('DB_PASS') ?: 'O@mO23352433';
                 $databaseName = getenv('DB_NAME') ?: 'NKUPINE_SOCIAL_CLUB';
 
-                $this->pdo = new PDO("mysql:host=$dbHost;dbname=$databaseName", $username, $password);
+                $this->pdo = new PDO("mysql:host=$dbHost;dbname=$databaseName;charset=utf8mb4", $username, $password);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
-                error_log("Connection error: " . $e->getMessage()); // Log the error
+                error_log("Connection error: " . $e->getMessage());
                 throw new Exception("Unable to connect to the database. Please try again later.");
             }
         }
@@ -29,14 +34,11 @@ class NkupineSocialClubDB
             $stmt = $this->connection()->prepare($query);
             $stmt->execute($data);
 
-            // Fetch all results as an associative array or an object (based on your preference)
-            return $stmt->fetchAll(PDO::FETCH_OBJ); // Use fetchAll() to return an array of objects
+            return $stmt->fetchAll(PDO::FETCH_OBJ); // Returns results as objects
         } catch (PDOException $e) {
-            // Log the query and error message for easier debugging
             error_log("Query failed: $query");
             error_log("Error: " . $e->getMessage());
-            return false; // Return false if the query fails
+            return false;
         }
     }
-
 }
