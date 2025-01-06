@@ -7,5 +7,10 @@ $this->view('includes/Navbar');
     </div>
 
 <?php
+    echo "<pre>";
+    print_r($rows);
+?>
+
+<?php
 $this->view('includes/Footer');
 ?>
